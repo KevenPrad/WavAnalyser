@@ -1,0 +1,4 @@
+#Fri Jul 12 10:46:48 CEST 2019
+base.0=/home/asus/AndroidStudioProjects/WavAnalyser/app/build/intermediates/transforms/dexMerger/debug/6
+path.0=classes.dex
+renamed.0=classes.dex
