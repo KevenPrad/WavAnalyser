@@ -397,7 +397,18 @@ public class MainActivity extends AppCompatActivity {
 
                         graph.getViewport().setMinX(0.100);
                         graph.addSeries(series);
-                        graphDraw=true;
+                        int frequency=17000;
+                        if(calculSeuil(frequency, a)){
+                            detect.setText("detected : " + frequency + "Hz\n");
+                        }else{
+                            detect.setText("not detected : "+ frequency + "Hz\n");
+                        }
+
+                        int x = frequency/43;
+                        int j = Math.round(x);
+                        float seuil=Math.abs(a.real[j]*a.real[j]+a.imag[j]*a.imag[j])/100000;
+                        int aff=Math.round(seuil);
+                        detect.setText("coeff = "+ aff +"\n" );
 
                     }
                 }
@@ -553,7 +564,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean calculSeuil(int frequency, FFT a){
         float x= frequency/43;
         int j = Math.round(x);
-        float seuil=Math.abs(a.real[j]*a.real[j]+a.imag[j]*a.imag[j])/1000000000;
-        return seuil>=1000;
+        float seuil=Math.abs(a.real[j]*a.real[j]+a.imag[j]*a.imag[j]);
+
+        return seuil>=20;
     }
 }
